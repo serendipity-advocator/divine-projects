@@ -13,7 +13,7 @@ public:
     block()
     {
       for(auto a: block_content) a=0;
-      cout<<"block constucts"<<endl;
+      //cout<<"block constucts"<<endl;
     }
 
     int* get_block_content()
@@ -33,9 +33,9 @@ private:
     string name = "T1";
     int Matrix_T1[4][4] = {{0, 0, 0, 0}, {0, 0, 0, 0}, {1, 1, 1, 0}, {0, 1, 0, 0}};
 public:
-    T1(){cout<<name<<"'s child class constructs"<<endl;}
+    //T1(){cout<<name<<"'s child class constructs"<<endl;}
     string get_name() override {return name;}
-    ~T1(){cout<<name<<"'s child class destucts."<<endl;}
+    //~T1(){cout<<name<<"'s child class destucts."<<endl;}
 };
 
 class T2: public block
@@ -44,7 +44,7 @@ private:
     string name = "T2";
     int Matrix_T2[4][4] = {{0, 0, 0, 0}, {0, 1, 0, 0}, {1, 1, 0, 0}, {0, 1, 0, 0}};
 public:
-    T2(){cout<<name<<"'s child class constructs"<<endl;}
+    //T2(){cout<<name<<"'s child class constructs"<<endl;}
     string get_name() override {return name;}
 };
 
@@ -54,7 +54,7 @@ private:
     string name = "T3";
     int Matrix_T3[4][4] = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 1, 0, 0}, {1, 1, 1, 0}};
 public:
-    T3(){cout<<name<<"'s child class constructs"<<endl;}
+    //T3(){cout<<name<<"'s child class constructs"<<endl;}
     string get_name() override {return name;}
 };
 
@@ -64,7 +64,7 @@ private:
     string name = "T4";
     int Matrix_T4[4][4] = {{0, 0, 0, 0}, {1, 0, 0, 0}, {1, 1, 1, 0}, {0, 1, 0, 0}};
 public:
-    T4(){cout<<name<<"'s child class constructs"<<endl;}
+    //T4(){cout<<name<<"'s child class constructs"<<endl;}
     string get_name() override {return name;}
 };
 
@@ -74,7 +74,7 @@ private:
     string name = "L1";
     int Matrix_L1[4][4] = {{0, 0, 0, 0}, {1, 0, 0, 0}, {1, 0, 0, 0}, {1, 1, 0, 0}};
 public:
-    L1(){cout<<name<<"'s child class constructs"<<endl;}
+    //L1(){cout<<name<<"'s child class constructs"<<endl;}
     string get_name() override {return name;}
 };
 
@@ -84,7 +84,7 @@ private:
     string name = "L2";
     int Matrix_L2[4][4] = {{0, 0, 0, 0}, {0, 0, 0, 0}, {1, 1, 1, 0}, {1, 0, 0, 0}};
 public:
-    L2(){cout<<name<<"'s child class constructs"<<endl;}
+    //L2(){cout<<name<<"'s child class constructs"<<endl;}
     string get_name() override {return name;}
 };
 
@@ -94,7 +94,7 @@ private:
     string name = "L3";
     int Matrix_L3[4][4] = {{0, 0, 0, 0}, {1, 1, 0, 0}, {0, 1, 0, 0}, {0, 1, 0, 0}};
 public:
-    L3(){cout<<name<<"'s child class constructs"<<endl;}
+    //L3(){cout<<name<<"'s child class constructs"<<endl;}
     string get_name() override {return name;}
 };
 
@@ -104,7 +104,7 @@ private:
     string name = "L4";
     int Matrix_L4[4][4] = {{0, 0, 0, 0}, {1, 0, 0, 0}, {1, 1, 1, 0}, {0, 1, 0, 0}};
 public:
-    L4(){cout<<name<<"'s child class constructs"<<endl;}
+    //L4(){cout<<name<<"'s child class constructs"<<endl;}
     string get_name() override {return name;}
 };
 
@@ -114,7 +114,7 @@ private:
     string name = "J1";
     int Matrix_J1[4][4] = {{0, 1, 0, 0}, {0, 1, 0, 0}, {0, 1, 0, 0}, {1, 1, 0, 0}};
 public:
-    J1(){cout<<name<<"'s child class constructs"<<endl;}
+    //J1(){cout<<name<<"'s child class constructs"<<endl;}
     string get_name() override {return name;}
 };
 
@@ -124,7 +124,7 @@ private:
   string name = "J2";
     int Matrix_J2[4][4] = {{0, 1, 0, 0}, {0, 1, 0, 0}, {0, 1, 0, 0}, {1, 1, 0, 0}};
 public:
-    J2(){cout<<name<<"'s child class constructs"<<endl;}
+    //J2(){cout<<name<<"'s child class constructs"<<endl;}
     string get_name() override {return name;}
 };
 
@@ -134,7 +134,7 @@ private:
     string name = "J3";
     int Matrix_J3[4][4] = {{0, 0, 0, 0}, {1, 1, 0, 0}, {1, 0, 0, 0}, {1, 0, 0, 0}};
 public:
-    J3(){cout<<name<<"'s child class constructs"<<endl;}
+    //J3(){cout<<name<<"'s child class constructs"<<endl;}
     string get_name() override {return name;}
 };
 
@@ -144,7 +144,7 @@ private:
     string name = "J4";
     int Matrix_J4[4][4] = {{0, 0, 0, 0}, {1, 0, 0, 0}, {0, 1, 0, 0}, {1, 1, 1, 0}};
 public:
-    J4(){cout<<name<<"'s child class constructs"<<endl;}
+    //J4(){cout<<name<<"'s child class constructs"<<endl;}
     string get_name() override {return name;}
 };
 
@@ -154,7 +154,7 @@ private:
     string name = "S1";
     int Matrix_S1[4][4] = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 1, 1, 0}, {1, 1, 0, 0}};
 public:
-    S1(){cout<<name<<"'s child class constructs"<<endl;}
+    //S1(){cout<<name<<"'s child class constructs"<<endl;}
     string get_name() override {return name;}
 };
 
@@ -164,7 +164,7 @@ private:
     string name = "S2";
     int Matrix_S2[4][4] = {{0, 0, 0, 0}, {1, 0, 0, 0}, {1, 1, 0, 0}, {0, 1, 0, 0}};
 public:
-    S2(){cout<<name<<"'s child class constructs"<<endl;}
+    //S2(){cout<<name<<"'s child class constructs"<<endl;}
     string get_name() override {return name;}
 };
 
@@ -174,7 +174,7 @@ private:
     string name = "Z1";
     int Matrix_Z1[4][4] = {{0, 0, 0, 0}, {0, 0, 0, 0}, {1, 1, 0, 0}, {0, 1, 1, 0}};
 public:
-    Z1(){cout<<name<<"'s child class constructs"<<endl;}
+    //Z1(){cout<<name<<"'s child class constructs"<<endl;}
     string get_name() override {return name;}
 };
 
@@ -184,7 +184,7 @@ private:
     string name = "Z2";
     int Matrix_Z2[4][4] = {{0, 0, 0, 0}, {1, 0, 0, 0}, {1, 1, 0, 0}, {0, 1, 1, 0}};
 public:
-    Z2(){cout<<name<<"'s child class constructs"<<endl;}
+    //Z2(){cout<<name<<"'s child class constructs"<<endl;}
     string get_name() override {return name;}
 };
 
@@ -194,7 +194,7 @@ private:
     string name = "I1";
     int Matrix_I1[4][4] = {{1, 0, 0, 0}, {1, 0, 0, 0}, {1, 0, 0, 0}, {1, 0, 0, 0}};
 public:
-    I1(){cout<<name<<"'s child class constructs"<<endl;}
+    //I1(){cout<<name<<"'s child class constructs"<<endl;}
     string get_name() override {return name;}
 };
 
@@ -204,7 +204,7 @@ private:
     string name = "I2";
     int Matrix_I2[4][4] = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {1, 1, 1, 1}};
 public:
-    I2(){cout<<name<<"'s child class constructs"<<endl;}
+    //I2(){cout<<name<<"'s child class constructs"<<endl;}
     string get_name() override {return name;}
 };
 
@@ -214,7 +214,7 @@ private:
     string name = "O";
     int Matrix_O [4][4] = {{0, 0, 0, 0}, {0, 0, 0, 0}, {1, 1, 0, 0}, {1, 1, 0, 0}};
 public:
-    O(){cout<<name<<"'s child class constructs"<<endl;}
+    //O(){cout<<name<<"'s child class constructs"<<endl;}
     string get_name() override {return name;}
 };
 
@@ -258,19 +258,23 @@ public:
     {
         //string form_name;
         //cin>>form_name;
-        int form_exist =0;
-        for(int i = 0; i< 17; i++)
+        int form_exist;
+        for(form_exist = 0; form_exist< 17; form_exist++)
         {
+            //cout<<form_exist<<endl;
+            //cout<<"comparing!"<<endl;
             //cout<<i<<endl;
             //cout<<block_type[i]->get_name()<<endl;
-            if(form_wanted == block_type[i]->get_name())
+            if(form_wanted == block_type[form_exist]->get_name())
             {
-                cout<<block_type[i]->get_name();
+                cout<<"We have "<<block_type[form_exist]->get_name()<<" for you!"<<endl;
                 break;
             }
-            else form_exist = form_exist +1;
         }
-        if(form_exist !=0) {cout<<"no such form provided in the game"<<endl;}
+        //cout<<form_exist<<endl;
+        if(form_exist == 17) {cout<<"Sorry, no such form provided in the game"<<endl;}
+        form_exist = 0;
+      //  cout<<form_exist<<endl;
     }
 };
 
@@ -281,5 +285,9 @@ int main()
     form eg_form;
     cout<<"Ready to get form!!"<<endl;
     cin>>form_name;
-    eg_form.get_form(form_name);
+    while(form_name!="End")
+    {
+        eg_form.get_form(form_name);
+        cin>>form_name;
+    }
 }
