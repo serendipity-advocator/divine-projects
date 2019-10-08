@@ -324,6 +324,7 @@ private:
   int row = 0;
   int col = 0;
   int detecting_block[4][2]={{0, 0}, {0, 0}, {0, 0}, {0, 0}};
+  int drop_table[4]={0, 0, 0, 0};
   int count=0;
 public:
   void set_row(int a)
@@ -371,9 +372,14 @@ public:
     delete [] Game_matrix;
   }
 
+  int Get_element(int j, int k)
+  {
+    return Game_matrix[j][k];
+  }
+
   void Display_game()
   {
-    for(int j= 0; j < (row+4); j++)
+    for(int j= 4; j < (row+4); j++)
       {
         for(int k = 0; k < col; k++)
         {
@@ -381,6 +387,7 @@ public:
         }
         cout<<endl;
       }
+      cout<<endl;
   }
 
   void Display_detecting_block()
@@ -396,12 +403,59 @@ public:
     cout<<endl;
   }
 
+  void Display_drop_table()
+  {
+    cout<<"Now drop table is { ";
+    for(int i=0; i<4; i++)
+    {
+      cout<<drop_table[i]<<" ";
+    }
+    cout<<"}"<<endl;
+  }
+
+  void clear_drop_table()
+  {
+    for(int j=0; j<4; j++)
+    {
+      drop_table[j] = 0;
+    }
+  }
+
+  bool detect_buffer(int k)
+  {
+    int count = 0;
+    for(int j= 0; j < 4; j++)
+      {
+        for(int k = 0; k < col; k++)
+        {
+          if(Game_matrix[j][k]==1)
+          {
+            count++;
+          }
+
+        }
+        //cout<<"There are "<<count<<"small blocks in buffer."<<endl;
+      }
+      if(count == k) return 1;
+      else return 0;
+  }
+  void clear_detecting_block()
+  {
+    for(int j=0; j<4; j++)
+    {
+      for(int k=0; k<2; k++)
+      {
+        detecting_block[j][k] =0;
+      }
+    }
+  }
+
   bool dropping_condition()
   {
     int i =0;
     int interior = 0;
     cout<<"drop 1!"<<endl;
-    Display_detecting_block();
+    //();
     for(count = 0; count < 4; count++)
     {
       cout<<"Now, count is "<<count<<endl;
@@ -440,10 +494,11 @@ public:
           }
     }
   }
+
   void Add_form(string added, int pos)
   {
     int form_exist;
-    cout<<added<<endl;
+    //cout<<added<<endl;
     //adding the wanted form to the buffer.
     for(int j= 0; j < 4; j++)
       {
@@ -455,44 +510,117 @@ public:
             {
               //cout<<form_exist<<endl;
               //cout<<"We have "<<eg_form.block_type[form_exist]->get_name()<<" for you!"<<endl;
-              Game_matrix[j][pos+k] = eg_form.block_type[form_exist]->get_block_content(j, k);
+              Game_matrix[j][pos+k-1] = eg_form.block_type[form_exist]->get_block_content(j, k);
             }
           }
         }
       }
-      Display_game();
-      //scanning the buffer region
-      cout<<"The added block is located at :"<<endl;
-      count = 0;
-      for(int j= 0; j < 4; j++)
+      if(detect_buffer(4)==1)
       {
-          for(int k = 0;k < col; k++)
-          {
-            if(Game_matrix[j][k] == 1)
-            {
-              detecting_block[count][0]=j;
-              detecting_block[count][1]=k;
-              cout<<"["<<j<<", "<<k<<"]"<<endl;
-              count++;
-            }
-          }
-      }
-      Display_detecting_block();
-      cout<<"Now, we start to drop!"<<endl;
-      //droping
-      while(dropping_condition()==1)
-      {
-        cout<<"drop!"<<endl;//not okay!
-        for(int j = 3; j>-1 ; j--)
+        //Display_game();
+        //scanning the buffer region
+        cout<<"The added block is located at :"<<endl;
+        count = 0;
+        for(int j= 0; j < 4; j++)
         {
-            Game_matrix[detecting_block[j][0]][detecting_block[j][1]]=0;
-            detecting_block[j][0] = detecting_block[j][0]+1;
-            Game_matrix[detecting_block[j][0]][detecting_block[j][1]]=1;
+            for(int k = 0;k < col; k++)
+            {
+              if(Game_matrix[j][k] == 1)
+              {
+                detecting_block[count][0]=j;
+                detecting_block[count][1]=k;
+                //cout<<"["<<j<<", "<<k<<"]"<<endl;
+                count++;
+              }
+            }
         }
+        //Display_detecting_block();
+        //<<"Now, we start to drop!"<<endl;
+        //droping
+        while(dropping_condition()==1)
+        {
+          //cout<<"drop!"<<endl;//not okay!
+          for(int j = 3; j>-1 ; j--)
+          {
+              Game_matrix[detecting_block[j][0]][detecting_block[j][1]]=0;
+              detecting_block[j][0] = detecting_block[j][0]+1;
+              Game_matrix[detecting_block[j][0]][detecting_block[j][1]]=1;
+          }
+          Display_game();
+        }
+        clear_detecting_block();
+        Display_detecting_block();
         Display_game();
       }
+      else cout<<"invalid input!"<<endl;
+    }
+
+  void cancel_block()
+  {
+    //cout<<Game_matrix[row+4][0];
+    cout<<"Now ready to canceling blocks!"<<endl;
+    //Display_game();
+    int j, k, m;
+    int i = 0;
+    int drop_number = 0;
+    for(j= (row+3); j >= 4; j--)
+      {
+        //cout<<"Running first layer of nested for-loop."<<endl;
+        count=0;
+        for(k = 0; k < col; k++)
+        {
+          //cout<<"Running second layer of nested for-loop."<<endl;
+          cout<<"Now we are in the "<<j<<"th row and the "<<k<<"th column."<<endl;
+          if(Game_matrix[j][k]==1)
+          {
+            //cout<<Game_matrix[j][k]<<endl;
+            count++;
+          }
+          cout<<"This row now already have "<<count<<" full small blocks."<<endl;
+          //cout<<count;
+        }
+        if(count==col)
+        {
+          drop_number++;
+          drop_table[i] = j;
+          i++;
+          for(k = 0; k < col; k++)
+          {
+            Game_matrix[j][k]=0;
+          }
+        }
+      }
+      //Display_drop_table();
+      if(drop_table[0]!=0)
+      {
+        //cout<<"bang!"<<endl;
+        m=1;
+        for(j=(row+3); j>=4; j--)
+        {
+          //cout<<"Row scanning!"<<endl;
+          if(j<drop_table[m]) {m++;}
+          if(j==drop_table[m]) {continue;}
+          if(j>drop_table[0]) {continue;}
+
+          for(k = 0; k < col; k++)
+            {
+                Game_matrix[j][k]=Game_matrix[j-m][k];
+            }
+        }
+      }
+      //cout<<"bang!";
+      clear_drop_table();
       Display_game();
     }
+
+  void game_over_judge()
+  {
+    if(detect_buffer(0)!=1)
+    {
+      Delete_game();
+      cout<<"GAME OVER"<<endl;
+    }
+  }
   };
 
 int main()
@@ -509,10 +637,18 @@ int main()
     cin>>col;
     Game_screen round1(row, col);
     cout<<"Ready to get form!!"<<endl;
+
     while(added!="End")
     {
       cin>>added>>position;
       round1.Add_form(added, position);
+      //cout<<"bang!"; okay
+      round1.cancel_block();
+      round1.game_over_judge();
+    }
+    if(added!="End")
+    {
+      round1.Delete_game();
     }
     return 0;
 }
